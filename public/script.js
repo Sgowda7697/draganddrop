@@ -1,8 +1,8 @@
+//function called when the color cards are dragged
 function onDragStart(event) {
     event
       .dataTransfer
       .setData('text/plain', event.target.id);
-  
     event
       .currentTarget
       .style
@@ -11,8 +11,8 @@ function onDragStart(event) {
   function onDragOver(event) {
     event.preventDefault();
   }
+  //function called when the color cards are dropped on empty cards
   function onDrop(event) {
-    
     const id = event
       .dataTransfer
       .getData('text');
@@ -24,7 +24,7 @@ function onDragStart(event) {
     .dataTransfer
     .clearData();
   }
-
+//function to create a cookie
   function createCookie(name,value,days) {
     if (days) {
       var date = new Date();
@@ -34,7 +34,7 @@ function onDragStart(event) {
     else var expires = "";
     document.cookie = name+"="+value+expires+"; path=/";
   }
-  
+  //function to read a cookie
   function readCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
@@ -45,17 +45,19 @@ function onDragStart(event) {
     }
     return null;
   }
+  //function to delete all the cookies set
   function deleteAllCookies(){
     var cookies = document.cookie.split(";");
     for (var i = 0; i < cookies.length; i++)
     eraseCookie(cookies[i].split("=")[0]);
     location.reload(true);
  }
-  
+ //function to delete a specific cookie
   function eraseCookie(name) {
     createCookie(name,"",-1);
   }
   $(document).ready(function(){
+    //check for the cookie by using the draggable element's ID, if set get the target element
     $('#example-origin > div').map(function() {
       var x = readCookie(this.id);
       if(x){
@@ -64,6 +66,7 @@ function onDragStart(event) {
       dropzone.appendChild(draggableElement);
       }
     });
+    //delete all the cookies when reset button is clicked
     $('#reset').click(function(){
       deleteAllCookies();
     })

@@ -1,136 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
   <title>Drag and drop cards</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container" ng-app="" ng-init="cardnum=[1,2,3,4,5,6,7,8,9,10,11,12];drags=['Orange','Green','Blue']">
         <h2 class="pt-3">Drag and drop the color cards into the gray cards</h2>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
-            <div class="col-3 p-3">
-                <div id="one" ondragover="onDragOver(event);"
-                ondrop="onDrop(event);"
-                class="card h-100 w-100 d-inline-block p-5 p-small-2 background-light "></div>
-            </div>
-            <div class="col-3 p-3">
-                <div id="two" ondragover="onDragOver(event);"
-                ondrop="onDrop(event);"
-                class="card h-100 w-100 d-inline-block p-5 p-small-2 background-light "></div>
-            </div>
-            <div class="col-3 p-3">
-                <div id="three" ondragover="onDragOver(event);"
-                ondrop="onDrop(event);"
-                class="card h-100 w-100 d-inline-block p-5 p-small-2 background-light "></div>
-            </div>
-            <div class="col-3 p-3">
-                <div id="four" ondragover="onDragOver(event);"
-                ondrop="onDrop(event);"
-                class="card h-100 w-100 d-inline-block p-5 p-small-2 background-light "></div>
-            </div>
-        </div>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
-            <div class="col-3 p-3">
-                <div id="five" ondragover="onDragOver(event);"
-                ondrop="onDrop(event);"
-                class="card h-100 w-100 d-inline-block p-5 p-small-2 background-light "></div>
-            </div>
-            <div class="col-3 p-3">
-                <div id="six" ondragover="onDragOver(event);"
-                ondrop="onDrop(event);"
-                class="card h-100 w-100 d-inline-block p-5 p-small-2 background-light "></div>
-            </div>
-            <div class="col-3 p-3">
-                <div id="seven" ondragover="onDragOver(event);"
-                ondrop="onDrop(event);"
-                class="card h-100 w-100 d-inline-block p-5 p-small-2 background-light "></div>
-            </div>
-            <div class="col-3 p-3">
-                <div id="eight" ondragover="onDragOver(event);"
-                ondrop="onDrop(event);"
-                class="card h-100 w-100 d-inline-block p-5 p-small-2 background-light "></div>
-            </div>
-        </div>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
-            <div id="nine" class="col-3 p-3">
-                <div ondragover="onDragOver(event);"
-                ondrop="onDrop(event);"
-                class="card h-100 w-100 d-inline-block p-5 p-small-2 background-light "></div>
-            </div>
-            <div class="col-3 p-3">
-                <div id="ten" ondragover="onDragOver(event);"
-                ondrop="onDrop(event);"
-                class="card h-100 w-100 d-inline-block p-5 p-small-2 background-light "></div>
-            </div>
-            <div class="col-3 p-3">
-                <div id="eleven" ondragover="onDragOver(event);"
-                ondrop="onDrop(event);"
-                class="card h-100 w-100 d-inline-block p-5 p-small-2 background-light "></div>
-            </div>
-            <div class="col-3 p-3">
-                <div id="twelve" ondragover="onDragOver(event);"
-                ondrop="onDrop(event);"
-                class="card h-100 w-100 d-inline-block p-5 p-small-2 background-light "></div>
-            </div>
-        </div>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
-            <div class="col-3 p-3">
-                <div id="thirteen" ondragover="onDragOver(event);"
-                ondrop="onDrop(event);"
-                class="card h-100 w-100 d-inline-block p-5 p-small-2 background-light "></div>
-            </div>
-            <div class="col-3 p-3">
-                <div id="fourteen" ondragover="onDragOver(event);"
-                ondrop="onDrop(event);"
-                class="card h-100 w-100 d-inline-block p-5 p-small-2 background-light "></div>
-            </div>
-            <div class="col-3 p-3">
-                <div id="fifteen" ondragover="onDragOver(event);"
-                ondrop="onDrop(event);"
-                class="card h-100 w-100 d-inline-block p-5 p-small-2 background-light "></div>
-            </div>
-            <div class="col-3 p-3">
-                <div id="sixteen" ondragover="onDragOver(event);"
+            <div class="col-4 p-3" ng-repeat="i in cardnum">
+                <div id="card{{ i }}" ondragover="onDragOver(event);"
                 ondrop="onDrop(event);"
                 class="card h-100 w-100 d-inline-block p-5 p-small-2 background-light "></div>
             </div>
         </div>
         <div id="example-origin" class="mx-0 row">
-            <div
-              id="draggable-1"
-              class="example-draggable bg-warning col"
-              draggable="true"
-              ondragstart="onDragStart(event);"
-            >
-             Orange
-            </div>
-            <div
-            id="draggable-2"
-            class="example-draggable bg-success col"
-            draggable="true"
-            ondragstart="onDragStart(event);"
-          >
-            Green
-          </div>
-          <div
-            id="draggable-3"
-            class="example-draggable bg-info col"
-            draggable="true"
-            ondragstart="onDragStart(event);"
-          >
-            Blue
-          </div>
+            <div ng-repeat="x in drags" id="draggable-{{ x }}" class="example-draggable bg{{ x }} col" draggable="true" ondragstart="onDragStart(event);">{{ x }}</div>
         </div>
         <div class="text-center mt-5">
           <button id="reset" type="button" class="btn btn-dark">Reset selection</button>
         </div>
     </div>
-    
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
